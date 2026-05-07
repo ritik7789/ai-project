@@ -1,0 +1,14 @@
+<section class="panel">
+  <div class="heading-row">
+    <h2>Create User</h2>
+    <a routerLink="/users">Back to Users</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="card">
+    <label>Full name <input formControlName="full_name" /></label>
+    <label>Email <input formControlName="email" type="email" /></label>
+    <label>Department <input formControlName="department" /></label>
+    <label>Role <input formControlName="role" /></label>
+    <button type="submit">Create</button>
+  </form>
+</section>

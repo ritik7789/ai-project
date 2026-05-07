@@ -1,0 +1,40 @@
+<section class="panel">
+  <div class="heading-row">
+    <h2>Users</h2>
+    <a class="cta" routerLink="/users/new">Create User</a>
+  </div>
+
+  @if (loading()) {
+    <app-loading-state label="Loading users" />
+  } @else if (error()) {
+    <app-error-state [message]="error() ?? ''" (retry)="fetchUsers()" />
+  } @else if (users().length === 0) {
+    <app-empty-state title="No users yet" description="Start by creating your first user." />
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users(); track user.id) {
+          <tr>
+            <td>{{ user.full_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.department || '-' }}</td>
+            <td>{{ user.role || '-' }}</td>
+            <td class="actions">
+              <a routerLink="/users/{{ user.id }}/edit">Edit</a>
+              <button type="button" class="danger" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

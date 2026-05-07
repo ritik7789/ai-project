@@ -1,12 +1,15 @@
 <div class="layout">
   <header>
     <h1>ERP Admin Console</h1>
-    <p>Angular + FastAPI integration workspace</p>
+    <p>Navigation-first workspace with focused pages per workflow</p>
   </header>
 
   <nav>
+    <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Home</a>
     <a routerLink="/users" routerLinkActive="active">Users</a>
+    <a routerLink="/users/new" routerLinkActive="active">Create User</a>
     <a routerLink="/erp-documents" routerLinkActive="active">ERP Documents</a>
+    <a routerLink="/erp-documents/new" routerLinkActive="active">Add ERP Document</a>
     <a routerLink="/rag" routerLinkActive="active">RAG Query</a>
   </nav>
 

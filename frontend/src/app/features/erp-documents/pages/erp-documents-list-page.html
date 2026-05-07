@@ -1,0 +1,26 @@
+<section class="panel">
+  <div class="heading-row">
+    <h2>ERP Documents</h2>
+    <a class="cta" routerLink="/erp-documents/new">Add Document</a>
+  </div>
+
+  @if (loading()) {
+    <app-loading-state label="Loading ERP documents" />
+  } @else if (error()) {
+    <app-error-state [message]="error() ?? ''" (retry)="fetchDocuments()" />
+  } @else if (documents().length === 0) {
+    <app-empty-state title="No ERP documents" description="Add a document to power RAG queries." />
+  } @else {
+    <ul>
+      @for (document of documents(); track document.id) {
+        <li>
+          <div>
+            <h4>{{ document.source_name }}</h4>
+            <p>{{ document.content }}</p>
+          </div>
+          <button type="button" class="danger" (click)="deleteDocument(document.id)">Delete</button>
+        </li>
+      }
+    </ul>
+  }
+</section>

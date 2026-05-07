@@ -1,0 +1,12 @@
+<section class="panel">
+  <div class="heading-row">
+    <h2>Add ERP Document</h2>
+    <a routerLink="/erp-documents">Back to Documents</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="card">
+    <label>Source name <input formControlName="source_name" /></label>
+    <label>Content <textarea rows="10" formControlName="content"></textarea></label>
+    <button type="submit">Save</button>
+  </form>
+</section>

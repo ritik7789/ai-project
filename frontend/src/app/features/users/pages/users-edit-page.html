@@ -1,0 +1,20 @@
+<section class="panel">
+  <div class="heading-row">
+    <h2>Edit User</h2>
+    <a routerLink="/users">Back to Users</a>
+  </div>
+
+  @if (loading()) {
+    <app-loading-state label="Loading user details" />
+  } @else if (error()) {
+    <app-error-state [message]="error() ?? ''" />
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="submit()" class="card">
+      <label>Full name <input formControlName="full_name" /></label>
+      <label>Email <input formControlName="email" type="email" /></label>
+      <label>Department <input formControlName="department" /></label>
+      <label>Role <input formControlName="role" /></label>
+      <button type="submit">Save Changes</button>
+    </form>
+  }
+</section>
