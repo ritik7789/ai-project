@@ -1,0 +1,12 @@
+.panel { padding: 1rem; }
+.grid { display: grid; gap: 1rem; grid-template-columns: 300px 1fr 320px; }
+.card { background: #fff; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem; }
+form { display: grid; gap: 0.75rem; }
+label { display: grid; gap: 0.25rem; font-size: 0.9rem; color: #334155; }
+input, textarea { border: 1px solid #cbd5e1; border-radius: 0.5rem; padding: 0.5rem; }
+button { border: 0; background: #0f766e; color: #fff; border-radius: 0.5rem; padding: 0.5rem 0.75rem; cursor: pointer; }
+button.danger { background: #b91c1c; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+tr.selected { background: #f0fdfa; }
+@media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }

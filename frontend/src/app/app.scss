@@ -1,0 +1,52 @@
+:host {
+  color: #0f172a;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+.layout {
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 10% 10%, #ccfbf1 0%, transparent 35%),
+    radial-gradient(circle at 90% 20%, #fde68a 0%, transparent 35%),
+    #f8fafc;
+}
+
+header {
+  padding: 1.25rem 1.5rem 0.75rem;
+}
+
+h1 {
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+header p {
+  margin: 0.35rem 0 0;
+  color: #475569;
+}
+
+nav {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  color: #0f172a;
+  background: #fff;
+}
+
+nav a.active {
+  background: #0f766e;
+  color: #fff;
+  border-color: #0f766e;
+}
+
+main {
+  padding: 0 1.5rem 1.5rem;
+}

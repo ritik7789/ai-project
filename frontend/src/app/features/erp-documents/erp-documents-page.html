@@ -1,0 +1,36 @@
+<section class="panel">
+  <h2>ERP Documents</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Add ERP Document</h3>
+      <form [formGroup]="form" (ngSubmit)="createDocument()">
+        <label>Source name <input formControlName="source_name" /></label>
+        <label>Content <textarea formControlName="content" rows="8"></textarea></label>
+        <button type="submit">Save Document</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Stored Documents</h3>
+      @if (loading()) {
+        <app-loading-state label="Loading ERP documents" />
+      } @else if (error()) {
+        <app-error-state [message]="error() ?? ''" (retry)="fetchDocuments()" />
+      } @else if (documents().length === 0) {
+        <app-empty-state title="No ERP documents" description="Add one to power RAG answers." />
+      } @else {
+        <ul>
+          @for (document of documents(); track document.id) {
+            <li>
+              <div>
+                <h4>{{ document.source_name }}</h4>
+                <p>{{ document.content }}</p>
+              </div>
+              <button type="button" class="danger" (click)="deleteDocument(document.id)">Delete</button>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+</section>

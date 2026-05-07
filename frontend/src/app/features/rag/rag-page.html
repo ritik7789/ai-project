@@ -1,0 +1,28 @@
+<section class="panel">
+  <h2>RAG Query</h2>
+  <div class="card">
+    <form [formGroup]="form" (ngSubmit)="runQuery()">
+      <label>Question
+        <textarea formControlName="question" rows="4" placeholder="Ask about ERP policy, finance, inventory, etc."></textarea>
+      </label>
+      <button type="submit">Ask</button>
+    </form>
+  </div>
+
+  <div class="card result">
+    @if (loading()) {
+      <app-loading-state label="Searching ERP knowledge base" />
+    } @else if (!result()) {
+      <app-empty-state title="No answer yet" description="Run a question to see matched source and answer." />
+    } @else {
+      <h3>Answer</h3>
+      <p>{{ result()?.answer }}</p>
+      <h4>Matched Source</h4>
+      <p>{{ result()?.matched_source_name || 'None' }}</p>
+      <h4>Matched Chunk</h4>
+      <p>{{ result()?.matched_chunk || 'No chunk found' }}</p>
+      <h4>Score</h4>
+      <p>{{ result()?.score }}</p>
+    }
+  </div>
+</section>

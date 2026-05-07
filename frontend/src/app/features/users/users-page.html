@@ -1,0 +1,69 @@
+<section class="panel">
+  <h2>Users</h2>
+
+  @if (loading()) {
+    <app-loading-state label="Loading users" />
+  } @else if (error()) {
+    <app-error-state [message]="error() ?? ''" (retry)="fetchUsers()" />
+  } @else {
+    <div class="grid">
+      <div class="card">
+        <h3>Create User</h3>
+        <form [formGroup]="userForm" (ngSubmit)="createUser()">
+          <label>Full name <input formControlName="full_name" /></label>
+          <label>Email <input formControlName="email" type="email" /></label>
+          <label>Department <input formControlName="department" /></label>
+          <label>Role <input formControlName="role" /></label>
+          <button type="submit" [disabled]="saving()">Create</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>User Records</h3>
+        @if (users().length === 0) {
+          <app-empty-state title="No users" description="Create one using the form." />
+        } @else {
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (user of users(); track user.id) {
+                <tr [class.selected]="selectedUserId() === user.id" (click)="selectUser(user.id)">
+                  <td>{{ user.full_name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.department || '-' }}</td>
+                  <td>{{ user.role || '-' }}</td>
+                  <td>
+                    <button type="button" class="danger" (click)="deleteUser(user.id); $event.stopPropagation()">Delete</button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </div>
+
+      <div class="card">
+        <h3>Update Selected User</h3>
+        @if (selectedUser()) {
+          <form [formGroup]="editForm" (ngSubmit)="updateSelectedUser()">
+            <label>Full name <input formControlName="full_name" /></label>
+            <label>Email <input formControlName="email" type="email" /></label>
+            <label>Department <input formControlName="department" /></label>
+            <label>Role <input formControlName="role" /></label>
+            <button type="submit" [disabled]="saving()">Update</button>
+          </form>
+        } @else {
+          <app-empty-state title="No user selected" description="Select a user from the table first." />
+        }
+      </div>
+    </div>
+  }
+</section>
