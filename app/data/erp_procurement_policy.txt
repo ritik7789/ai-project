@@ -1,0 +1,5 @@
+ERP Procurement Sample
+
+The ERP procurement module manages purchase requests, purchase orders, vendor quotations, approval workflows, and goods receipt notes. A purchase request should include department, requested item, quantity, expected delivery date, estimated cost, and business justification.
+
+Before creating a purchase order, procurement users should compare vendor quotations and confirm budget availability. Manager approval is required when the purchase value is above the department approval limit.

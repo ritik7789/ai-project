@@ -1,0 +1,5 @@
+ERP Sales Order Sample
+
+The ERP sales module manages customer accounts, sales quotations, sales orders, delivery status, invoices, and payment collection. A sales order should include customer name, item code, quantity, selling price, tax amount, delivery address, and expected shipment date.
+
+Sales users should confirm stock availability before committing delivery dates to customers. If stock is unavailable, the system can notify inventory and procurement teams.

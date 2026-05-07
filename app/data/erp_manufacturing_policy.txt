@@ -1,0 +1,5 @@
+ERP Manufacturing Sample
+
+The ERP manufacturing module manages production orders, bill of materials, work centers, machine schedules, raw material consumption, quality checks, and finished goods output. A production order should include product code, planned quantity, start date, end date, and required raw materials.
+
+Manufacturing users should verify inventory availability before releasing a production order. Quality inspection results must be recorded before finished goods are moved to the warehouse.

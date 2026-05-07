@@ -1,0 +1,5 @@
+ERP Inventory Sample
+
+The ERP inventory module tracks item code, item name, warehouse location, available quantity, reorder level, supplier name, and purchase cost. When available quantity falls below the reorder level, the procurement team should create a purchase request.
+
+Inventory users can search stock by item code, warehouse, supplier, or category. Stock movement records should be reviewed before month-end closing.

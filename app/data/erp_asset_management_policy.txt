@@ -1,0 +1,5 @@
+ERP Asset Management Sample
+
+The ERP asset management module tracks fixed assets such as laptops, machines, vehicles, furniture, and tools. Asset records should include asset code, purchase date, vendor, cost center, assigned employee, location, warranty end date, and depreciation method.
+
+Finance users review asset depreciation during month-end closing. Admin users should update asset location and assigned employee whenever equipment is transferred between departments.

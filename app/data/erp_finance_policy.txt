@@ -1,0 +1,5 @@
+ERP Finance Sample
+
+The ERP finance module manages invoices, payments, vendors, purchase orders, and general ledger entries. Accounts payable users should match vendor invoices with purchase orders before payment approval.
+
+Invoice status can be draft, submitted, approved, paid, rejected, or cancelled. Month-end closing should include bank reconciliation, pending invoice review, and tax report validation.

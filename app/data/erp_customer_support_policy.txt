@@ -1,0 +1,5 @@
+ERP Customer Support Sample
+
+The ERP support module records customer tickets, service requests, complaint category, priority, assigned user, resolution notes, and closure status. High priority tickets should be assigned to the correct department within the defined service level agreement.
+
+Support users can link a customer ticket with sales orders, invoices, warranty information, or delivery issues. This helps teams understand the full customer history before responding.

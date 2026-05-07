@@ -1,0 +1,5 @@
+ERP Quality Control Sample
+
+The ERP quality module manages inspection plans, quality checkpoints, defect records, rejected quantity, approved quantity, and corrective actions. Quality checks may happen during purchase receipt, production, warehouse transfer, or customer return.
+
+Quality users should record inspection results with item code, batch number, defect reason, inspector name, and approval status. Rejected items should be blocked from sale or production until corrective action is completed.

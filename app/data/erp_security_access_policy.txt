@@ -1,0 +1,5 @@
+ERP Security Access Sample
+
+The ERP security module controls user roles, permissions, login access, approval rights, and audit logs. A user should only receive permissions required for their job role and department.
+
+Admin users should review inactive users, failed login attempts, privileged roles, and approval permission changes. Access reviews are important before financial closing and external audits.

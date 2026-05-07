@@ -1,0 +1,5 @@
+ERP HR Policy Sample
+
+Employees can apply for annual leave through the ERP HR module. A manager must approve the leave request before it is finalized. The ERP system stores employee ID, department, leave type, start date, end date, and approval status.
+
+Payroll details are processed monthly. Finance users can review salary components, deductions, reimbursements, and final payout status inside the payroll section of the ERP system.

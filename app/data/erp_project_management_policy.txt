@@ -1,0 +1,5 @@
+ERP Project Management Sample
+
+The ERP project module tracks projects, tasks, milestones, budgets, timesheets, billing status, and resource allocation. A project should include customer, project manager, start date, end date, estimated cost, planned revenue, and current status.
+
+Project managers should review task progress, timesheet approvals, purchase costs, and invoice milestones before reporting project profitability to finance.
