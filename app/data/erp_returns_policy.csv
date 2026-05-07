@@ -1,0 +1,6 @@
+policy_id,topic,value
+RET-001,return_window_days,30
+RET-001,eligible_items,"unused, unopened, original packaging"
+RET-001,non_returnable,"custom orders, digital licenses"
+RET-001,refund_mode,original payment method within 5-7 business days
+RET-001,approval_required_over_amount,1000 USD requires manager approval

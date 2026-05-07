@@ -1,8 +1,9 @@
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, File, HTTPException, UploadFile, status
 from sqlalchemy.orm import Session
 
 from app import crud, models, rag, schemas
 from app.database import Base, engine, get_db
+from app.ingestion import parse_document_content
 
 
 # Create database tables when the application starts.
@@ -96,6 +97,42 @@ def add_erp_document(
     return crud.create_erp_document(db=db, document=document)
 
 
+@app.post(
+    "/erp-documents/upload",
+    response_model=schemas.ErpDocumentRead,
+    status_code=status.HTTP_201_CREATED,
+)
+async def upload_erp_document(
+    file: UploadFile = File(...), db: Session = Depends(get_db)
+):
+    """Upload and ingest ERP documents from txt, csv, xls/xlsx, or pdf."""
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="File name is required")
+
+    file_bytes = await file.read()
+    if not file_bytes:
+        raise HTTPException(status_code=400, detail="Uploaded file is empty")
+
+    try:
+        parsed_content = parse_document_content(
+            filename=file.filename, content_bytes=file_bytes
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    if not parsed_content:
+        raise HTTPException(
+            status_code=400,
+            detail="Could not extract readable text from uploaded file",
+        )
+
+    document = schemas.ErpDocumentCreate(
+        source_name=file.filename,
+        content=parsed_content,
+    )
+    return crud.create_erp_document(db=db, document=document)
+
+
 @app.get("/erp-documents", response_model=list[schemas.ErpDocumentRead])
 def list_erp_documents(db: Session = Depends(get_db)):
     """List all ERP documents stored for RAG."""
@@ -124,4 +161,5 @@ def rag_query(query: schemas.RagQuery, db: Session = Depends(get_db)):
     - Returns the best matching chunk and source information.
     """
     documents = crud.get_erp_documents(db=db)
-    return rag.answer_question(question=query.question, documents=documents)
+    users = crud.get_users(db=db)
+    return rag.answer_question(question=query.question, documents=documents, users=users)

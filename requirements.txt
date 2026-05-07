@@ -3,3 +3,8 @@ uvicorn[standard]
 sqlalchemy
 pydantic
 email-validator
+pandas
+openpyxl
+xlrd
+pypdf
+python-multipart
